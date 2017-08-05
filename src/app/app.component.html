@@ -1,0 +1,575 @@
+<p class="padding">
+  <span>  <h1>SamarMeena Angular4 New Material Startup kit</h1></span>
+  <md-card>
+    <h2>Auto Select</h2>
+    <md-card-content>
+      <md-input-container class="example-full-width">
+        <input mdInput placeholder="State" [mdAutocomplete]="auto" [formControl]="stateCtrl">
+      </md-input-container>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>CheckBox</h2>
+    <md-card-content>
+      <md-autocomplete #auto="mdAutocomplete">
+        <md-option *ngFor="let state of filteredStates | async" [value]="state">
+          {{ state }}
+        </md-option>
+      </md-autocomplete>
+
+      <md-card>
+        <md-card-content>
+          <h4>Checkbox configuration</h4>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="checked">Checked</md-checkbox>
+            <md-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</md-checkbox>
+          </section>
+
+          <section class="example-section">
+            <label class="example-margin">Align:</label>
+            <md-radio-group [(ngModel)]="align">
+              <md-radio-button class="example-margin" value="start">Start</md-radio-button>
+              <md-radio-button class="example-margin" value="end">End</md-radio-button>
+            </md-radio-group>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</md-checkbox>
+          </section>
+        </md-card-content>
+      </md-card>
+
+      <md-card class="result">
+        <md-card-content>
+          <h2 class="example-h2">Result</h2>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [checked]="checked" [indeterminate]="indeterminate" [align]="align" [disabled]="disabled">
+              I'm a checkbox
+            </md-checkbox>
+          </section>
+        </md-card-content>
+      </md-card>
+
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Date Picker</h2>
+    <md-card-content>
+      <md-input-container class="example-full-width">
+        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+        <button mdSuffix [mdDatepickerToggle]="picker"></button>
+      </md-input-container>
+      <md-datepicker touchUi="true" #picker></md-datepicker>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Input</h2>
+    <md-card-content>
+      <form class="example-form" class="example-full-width">
+        <md-input-container class="example-full-width">
+          <input mdInput placeholder="Company (disabled)" disabled value="Google">
+        </md-input-container>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <md-input-container class="example-full-width">
+                <input mdInput placeholder="First name">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container class="example-full-width">
+                <input mdInput placeholder="Long Last Name That Will Be Truncated">
+              </md-input-container>
+            </td>
+          </tr>
+        </table>
+
+        <p>
+          <md-input-container class="example-full-width">
+            <textarea mdInput placeholder="Address">1600 Amphitheatre Pkwy</textarea>
+          </md-input-container>
+          <md-input-container class="example-full-width">
+            <textarea mdInput placeholder="Address 2"></textarea>
+          </md-input-container>
+        </p>
+
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <md-input-container class="example-full-width">
+                <input mdInput placeholder="City">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container class="example-full-width">
+                <input mdInput placeholder="State">
+              </md-input-container>
+            </td>
+            <td>
+              <md-input-container class="example-full-width">
+                <input mdInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+                <md-hint align="end">{{postalCode.value.length}} / 5</md-hint>
+              </md-input-container>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Radios Button</h2>
+    <md-card-content>
+      <md-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+        <md-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+          {{season}}
+        </md-radio-button>
+      </md-radio-group>
+      <div class="example-selected-value">Your favorite season is: {{favoriteSeason}}</div>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Select</h2>
+    <md-card-content>
+      <form>
+        <md-select placeholder="Favorite food" [(ngModel)]="selectedValue" name="food" class="example-full-width">
+          <md-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </md-option>
+        </md-select>
+
+        <p> Selected value: {{selectedValue}} </p>
+      </form>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Slider</h2>
+    <md-card-content>
+      <md-card>
+        <md-card-content>
+          <h2 class="example-h2">Slider configuration</h2>
+
+          <section class="example-section">
+            <md-input-container class="example-margin">
+              <input mdInput type="number" placeholder="Value" [(ngModel)]="value">
+            </md-input-container>
+            <md-input-container class="example-margin">
+              <input mdInput type="number" placeholder="Min value" [(ngModel)]="min">
+            </md-input-container>
+            <md-input-container class="example-margin">
+              <input mdInput type="number" placeholder="Max value" [(ngModel)]="max">
+            </md-input-container>
+            <md-input-container class="example-margin">
+              <input mdInput type="number" placeholder="Step size" [(ngModel)]="step">
+            </md-input-container>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="showTicks">Show ticks</md-checkbox>
+            <md-checkbox class="example-margin" [(ngModel)]="autoTicks" *ngIf="showTicks">
+              Auto ticks
+            </md-checkbox>
+            <md-input-container class="example-margin" *ngIf="showTicks && !autoTicks">
+              <input mdInput type="number" placeholder="Tick interval" [(ngModel)]="tickInterval">
+            </md-input-container>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="thumbLabel">Show thumb label</md-checkbox>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="vertical">Vertical</md-checkbox>
+            <md-checkbox class="example-margin" [(ngModel)]="invert">Inverted</md-checkbox>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="adisabled">Disabled</md-checkbox>
+          </section>
+
+        </md-card-content>
+      </md-card>
+
+      <md-card class="result">
+        <md-card-content>
+          <h2 class="example-h2">Result</h2>
+
+          <md-slider class="example-margin" [disabled]="adisabled" [invert]="invert" [max]="max" [min]="min" [step]="step" [thumb-label]="thumbLabel"
+            [tick-interval]="tickInterval" [value]="value" [vertical]="vertical">
+          </md-slider>
+        </md-card-content>
+      </md-card>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Slide Toggle</h2>
+    <md-card-content>
+      <md-card>
+        <md-card-content>
+          <h2 class="example-h2">Slider configuration</h2>
+
+          <section class="example-section">
+            <label class="example-margin">Color:</label>
+            <md-radio-group [(ngModel)]="color">
+              <md-radio-button class="example-margin" value="primary">
+                Primary
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="accent">
+                Accent
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="warn">
+                Warn
+              </md-radio-button>
+            </md-radio-group>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="bchecked">Checked</md-checkbox>
+          </section>
+
+          <section class="example-section">
+            <md-checkbox class="example-margin" [(ngModel)]="bdisabled">Disabled</md-checkbox>
+          </section>
+        </md-card-content>
+      </md-card>
+
+      <md-card class="result">
+        <md-card-content>
+          <h2 class="example-h2">Result</h2>
+
+          <section class="example-section">
+            <md-slide-toggle class="example-margin" [color]="color" [checked]="bchecked" [disabled]="bdisabled">
+              Slide me!
+            </md-slide-toggle>
+          </section>
+        </md-card-content>
+      </md-card>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Menu</h2>
+    <md-card-content>
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+      </button>
+      <md-menu #menu="mdMenu">
+        <button md-menu-item>
+          <md-icon>dialpad</md-icon>
+          <span>Redial</span>
+        </button>
+        <button md-menu-item disabled>
+          <md-icon>voicemail</md-icon>
+          <span>Check voicemail</span>
+        </button>
+        <button md-menu-item>
+          <md-icon>notifications_off</md-icon>
+          <span>Disable alerts</span>
+        </button>
+      </md-menu>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Side Nav</h2>
+    <md-card-content>
+      <md-sidenav-container class="example-container">
+        <md-sidenav #sidenav class="example-sidenav">
+          Jolly good!
+        </md-sidenav>
+
+        <div class="example-sidenav-content">
+          <button type="button" md-button (click)="sidenav.open()">Open sidenav</button>
+        </div>
+      </md-sidenav-container>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Toolbar</h2>
+    <md-card-content>
+      <md-toolbar color="primary">
+        <span>Custom Toolbar</span>
+
+        <md-toolbar-row>
+          <span>Second Line</span>
+          <span class="example-spacer"></span>
+          <md-icon class="example-icon">verified_user</md-icon>
+        </md-toolbar-row>
+
+        <md-toolbar-row>
+          <span>Third Line</span>
+          <span class="example-spacer"></span>
+          <md-icon class="example-icon">favorite</md-icon>
+          <md-icon class="example-icon">delete</md-icon>
+        </md-toolbar-row>
+      </md-toolbar>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>List</h2>
+    <md-card-content>
+      <md-list>
+        <h3 md-subheader>Folders</h3>
+        <md-list-item *ngFor="let folder of folders">
+          <md-icon md-list-icon>folder</md-icon>
+          <h4 md-line>{{folder.name}}</h4>
+          <p md-line> {{folder.updated | date}} </p>
+        </md-list-item>
+        <md-divider></md-divider>
+        <h3 md-subheader>Notes</h3>
+        <md-list-item *ngFor="let note of notes">
+          <md-icon md-list-icon>note</md-icon>
+          <h4 md-line>{{note.name}}</h4>
+          <p md-line> {{note.updated | date}} </p>
+        </md-list-item>
+      </md-list>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Grid List</h2>
+    <md-card-content>
+      <md-grid-list cols="4" rowHeight="100px">
+        <md-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+          {{tile.text}}
+        </md-grid-tile>
+      </md-grid-list>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Card</h2>
+    <md-card-content>
+      <md-card class="example-card">
+        <md-card-header>
+          <div md-card-avatar class="example-header-image"></div>
+          <md-card-title>Shiba Inu</md-card-title>
+          <md-card-subtitle>Dog Breed</md-card-subtitle>
+        </md-card-header>
+        <img md-card-image src="assets/shiba2.jpg">
+        <md-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes
+            very well with mountainous terrain, the Shiba Inu was originally bred for hunting.
+          </p>
+        </md-card-content>
+        <md-card-actions>
+          <button md-button>LIKE</button>
+          <button md-button>SHARE</button>
+        </md-card-actions>
+      </md-card>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Tabs</h2>
+    <md-card-content>
+      <md-tab-group>
+        <md-tab label="Tab 1">Content 1</md-tab>
+        <md-tab label="Tab 2">Content 2</md-tab>
+      </md-tab-group>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Button</h2>
+    <md-card-content>
+      <div class="example-container">
+        <h3>Normal Buttons</h3>
+        <div class="button-row">
+          <button md-button>Flat button</button>
+          <button md-raised-button>Raised button</button>
+          <button md-fab><md-icon>check</md-icon></button>
+          <button md-mini-fab><md-icon>check</md-icon></button>
+        </div>
+
+        <h3>Link Buttons</h3>
+        <div class="example-button-row">
+          <a md-button routerLink=".">Flat button</a>
+          <a md-raised-button routerLink=".">Raised button</a>
+          <a md-fab routerLink=".">
+            <md-icon>check</md-icon>
+          </a>
+          <a md-mini-fab routerLink=".">
+            <md-icon>check</md-icon>
+          </a>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Button Toggle</h2>
+    <md-card-content>
+      <md-button-toggle-group #group="mdButtonToggleGroup">
+        <md-button-toggle value="left">
+          <md-icon>format_align_left</md-icon>
+        </md-button-toggle>
+        <md-button-toggle value="center">
+          <md-icon>format_align_center</md-icon>
+        </md-button-toggle>
+        <md-button-toggle value="right">
+          <md-icon>format_align_right</md-icon>
+        </md-button-toggle>
+        <md-button-toggle value="justify" disabled>
+          <md-icon>format_align_justify</md-icon>
+        </md-button-toggle>
+      </md-button-toggle-group>
+      <div class="example-selected-value">Selected value: {{group.value}}</div>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Chips</h2>
+    <md-card-content>
+      <md-chip-list class="mat-chip-list-stacked">
+        <md-chip *ngFor="let chipColor of availableColors" selected="true" color="{{chipColor.color}}">
+          {{chipColor.name}}
+        </md-chip>
+      </md-chip-list>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Icon</h2>
+    <md-card-content>
+      <md-icon>home</md-icon>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Progress Spinner</h2>
+    <md-card-content>
+      <md-card>
+        <md-card-content>
+          <h2 class="example-h2">Progress spinner configuration</h2>
+
+          <section class="example-section">
+            <label class="example-margin">Color:</label>
+            <md-radio-group [(ngModel)]="color">
+              <md-radio-button class="example-margin" value="primary">
+                Primary
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="accent">
+                Accent
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="warn">
+                Warn
+              </md-radio-button>
+            </md-radio-group>
+          </section>
+
+          <section class="example-section">
+            <label class="example-margin">Mode:</label>
+            <md-radio-group [(ngModel)]="mode">
+              <md-radio-button class="example-margin" value="determinate">
+                Determinate
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="indeterminate">
+                Indeterminate
+              </md-radio-button>
+            </md-radio-group>
+          </section>
+
+          <section class="example-section" *ngIf="mode == 'determinate'">
+            <label class="example-margin">Progress:</label>
+            <md-slider class="example-margin" [(ngModel)]="evalue"></md-slider>
+          </section>
+        </md-card-content>
+      </md-card>
+      <md-card>
+        <md-card-content>
+          <h2 class="example-h2">Result</h2>
+
+          <md-progress-spinner class="example-margin" [color]="color" [mode]="mode" [value]="evalue">
+          </md-progress-spinner>
+        </md-card-content>
+      </md-card>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Progress Bar</h2>
+    <md-card-content>
+      <md-card>
+        <md-card-content>
+          <h2 class="example-h2">Progress bar configuration</h2>
+
+          <section class="example-section">
+            <label class="example-margin">Color:</label>
+            <md-radio-group [(ngModel)]="color">
+              <md-radio-button class="example-margin" value="primary">
+                Primary
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="accent">
+                Accent
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="warn">
+                Warn
+              </md-radio-button>
+            </md-radio-group>
+          </section>
+
+          <section class="example-section">
+            <label class="example-margin">Mode:</label>
+            <md-radio-group [(ngModel)]="mode">
+              <md-radio-button class="example-margin" value="determinate">
+                Determinate
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="indeterminate">
+                Indeterminate
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="buffer">
+                Buffer
+              </md-radio-button>
+              <md-radio-button class="example-margin" value="query">
+                Query
+              </md-radio-button>
+            </md-radio-group>
+          </section>
+
+          <section class="example-section" *ngIf="mode == 'determinate' || mode == 'buffer'">
+            <label class="example-margin">Progress:</label>
+            <md-slider class="example-margin" [(ngModel)]="dvalue"></md-slider>
+          </section>
+          <section class="example-section" *ngIf="mode == 'buffer'">
+            <label class="example-margin">Buffer:</label>
+            <md-slider class="example-margin" [(ngModel)]="bufferValue"></md-slider>
+          </section>
+        </md-card-content>
+      </md-card>
+
+      <md-card>
+        <md-card-content>
+          <h2 class="example-h2">Result</h2>
+
+          <section class="example-section">
+            <md-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="dvalue" [bufferValue]="bufferValue">
+            </md-progress-bar>
+          </section>
+        </md-card-content>
+      </md-card>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>Tooltips</h2>
+    <md-card-content>
+      <div class="example-tooltip-host" mdTooltip="Tooltip!" [mdTooltipPosition]="position">
+        <span>Show tooltip</span>
+        <md-select class="example-select" [(ngModel)]="position">
+          <md-option value="before">Before</md-option>
+          <md-option value="after">After</md-option>
+          <md-option value="above">Above</md-option>
+          <md-option value="below">Below</md-option>
+          <md-option value="left">Left</md-option>
+          <md-option value="right">Right</md-option>
+        </md-select>
+      </div>
+    </md-card-content>
+  </md-card>
+  <md-card>
+    <h2>SnackBar</h2>
+    <md-card-content>
+      <md-input-container>
+        <input mdInput value="Disco party!" placeholder="Message" #message>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput value="Dance" placeholder="Action" #action>
+      </md-input-container>
+
+      <button md-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
+    </md-card-content>
+  </md-card>
+</p>
