@@ -1,4 +1,4 @@
-# samarmeena-angular4-new-material-startup-kit
+# SamarMeena Angular4 New Material Startup kit
 Angular 4 with new MaterialModule Components for beginners to start with material design
 
 # Installation
